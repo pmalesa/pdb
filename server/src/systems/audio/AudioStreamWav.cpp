@@ -24,6 +24,11 @@ void AudioStreamWav::play(const AudioTrack& audioTrack)
     rtAudio_->startStream();
 }
 
+void AudioStreamWav::pause()
+{
+    BOOST_LOG_TRIVIAL(error) << "Pausing WAV files is not implemented yet!";
+}
+
 void AudioStreamWav::close()
 {
 }

@@ -49,6 +49,20 @@ void AudioStreamMp3::play(const AudioTrack& audioTrack)
     rtAudio_->startStream();
 }
 
+void AudioStreamMp3::pause()
+{
+    if(paused_)
+    {
+        rtAudio_->startStream();
+        paused_ = false;
+    }
+    else
+    {
+        paused_ = true;
+        rtAudio_->stopStream();
+    }
+}
+
 int AudioStreamMp3::playCallback(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, 
     double streamTime, RtAudioStreamStatus status)
 {

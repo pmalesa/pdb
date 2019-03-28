@@ -14,16 +14,18 @@ AudiobookPlayer::AudiobookPlayer(AudioManager& audioManager, VoiceManager& voice
 
 void AudiobookPlayer::playAudiobook(AudioTrack& audioTrack)
 {
+    BOOST_LOG_TRIVIAL(info) << "Playing audiotrack: " << audioTrack.getTrackName() << " (" << audioTrack.getFilePath() << ")";
     currentlyPlayedAudioStream_ = audioManager_.playMultipleAndGetLastAudioStream(std::vector<AudioTrack>({
             voiceManager_.getSynthesizedVoiceAudioTracks().at("playing_audiobook"),
             voiceManager_.getSynthesizedVoiceAudioTracks().at(audioTrack.getTrackName()),
             audioTrack
-        }));
+        })).get();
 }
 
-void AudiobookPlayer::pauseAudiobook()
+void AudiobookPlayer::pauseAudiobook(AudioTrack& audioTrack)
 {
-    
+    BOOST_LOG_TRIVIAL(info) << "Pausing audiotrack: " << audioTrack.getTrackName();
+    currentlyPlayedAudioStream_->pause();
 }
 
 }

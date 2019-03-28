@@ -11,13 +11,13 @@ class AudiobookPlayer
 public:
     AudiobookPlayer(AudioManager& audioManager, VoiceManager& voiceManager);
     void playAudiobook(AudioTrack& audioTrack);
-    void pauseAudiobook();
+    void pauseAudiobook(AudioTrack& audioTrack);
 
 private:
     AudioManager& audioManager_;
     VoiceManager& voiceManager_;
 
-    std::future<AudioStream*> currentlyPlayedAudioStream_;
+    AudioStream* currentlyPlayedAudioStream_;
 };
 
 }

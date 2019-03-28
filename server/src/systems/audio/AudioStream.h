@@ -17,6 +17,7 @@ public:
 
     virtual void play(const AudioTrack& audioTrack) = 0;
     virtual void close() = 0;
+    virtual void pause() = 0;
     virtual int playCallback(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status) = 0;
 
     bool isPaused() const { return paused_; }

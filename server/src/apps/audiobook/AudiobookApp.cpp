@@ -43,17 +43,17 @@ void AudiobookApp::appLoopFunction()
         inputManager_.update();
         if (inputManager_.isButtonPressed(InputManager::Button::BUTTON_Q))
         {
-            audioManager_.playAndGetAudioStream(voiceManager_.getSynthesizedVoiceAudioTracks().at("playing_audiobook"));
+            audiobookPlayer_.pauseAudiobook(audioTracks_[0]);
         }
 
         if (inputManager_.isButtonPressed(InputManager::Button::BUTTON_W))
         {
-            audioManager_.playAndGetAudioStream(audioTracks_[1]);
+            audioManager_.playAndGetAudioStream(audioTracks_[0]);
         }
 
         if (inputManager_.isButtonPressed(InputManager::Button::BUTTON_E))
         {
-            audiobookPlayer_.playAudiobook(audioTracks_[1]);
+            audiobookPlayer_.playAudiobook(audioTracks_[0]);
         }
         
     }
